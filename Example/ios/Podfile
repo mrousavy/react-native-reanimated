@@ -4,14 +4,17 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 
 config = use_native_modules!
-use_react_native!(:path => config["reactNativePath"])
+use_react_native!(
+  :path => config[:reactNativePath],
+  # to enable hermes on iOS, change `false` to `true` and then install pods
+  :hermes_enabled => true
+)
 
 def pods()
   pod 'RNReanimated', :path => '../../'
   pod 'ReactCommon/turbomodule/samples', :path => '../node_modules/react-native/ReactCommon'
 
   # Additional Pods which aren't included in the default Podfile
-  pod 'React-ART', :path => '../node_modules/react-native/Libraries/ART'
   pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga', :modular_headers => true
   pod 'React-callinvoker', :path => "../node_modules/react-native/ReactCommon/callinvoker"
   use_native_modules!
