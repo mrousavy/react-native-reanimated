@@ -209,6 +209,7 @@
 		B8F05DF926013F100019409F /* UIResponder+Reanimated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Reanimated.h"; sourceTree = "<group>"; };
 		B8F05DFA26013F100019409F /* UIResponder+Reanimated.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIResponder+Reanimated.mm"; sourceTree = "<group>"; };
 		B8F05DFB26013F100019409F /* REAIOSLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REAIOSLogger.h; sourceTree = "<group>"; };
+		B8F05DFC26013F1F0019409F /* JSGlobalUtils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = JSGlobalUtils.mm; sourceTree = "<group>"; };
 		FDBB176E229BF04900D1E455 /* libRNReanimated-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNReanimated-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -479,6 +480,7 @@
 				B8F05DF926013F100019409F /* UIResponder+Reanimated.h */,
 				B8F05DFA26013F100019409F /* UIResponder+Reanimated.mm */,
 				B8F05DFB26013F100019409F /* REAIOSLogger.h */,
+				B8F05DFC26013F1F0019409F /* JSGlobalUtils.mm */,
 			);
 			path = native;
 			sourceTree = "<group>";
