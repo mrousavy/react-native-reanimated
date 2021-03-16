@@ -22,6 +22,7 @@ function DragAndSnap(): React.ReactElement {
     startX: number;
     startY: number;
   };
+  console.log("ayy")
   const gestureHandler = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
     AnimatedGHContext
@@ -31,6 +32,9 @@ function DragAndSnap(): React.ReactElement {
       ctx.startY = translation.y.value;
     },
     onActive: (event, ctx) => {
+      console.log("console: on active!")
+      global.nativeLoggingHook("nativeLoggingHook: on active!", 2)
+      global._log("_log: on active --!")
       translation.x.value = ctx.startX + event.translationX;
       translation.y.value = ctx.startY + event.translationY;
     },
