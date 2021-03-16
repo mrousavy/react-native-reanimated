@@ -1,9 +1,5 @@
 import MutableValue from './MutableValue';
 
-global._setGlobalConsole = (_val) => {
-  // noop
-};
-
 const NOOP = () => {
   // noop
 };

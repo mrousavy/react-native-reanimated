@@ -35,7 +35,6 @@ const objectHooks = new Set([
 const globals = new Set([
   'this',
   'console',
-  '_setGlobalConsole',
   'Date',
   'Array',
   'ArrayBuffer',
@@ -52,6 +51,7 @@ const globals = new Set([
   'UIManager',
   'requestAnimationFrame',
   '_WORKLET',
+  '_LABEL',
   'arguments',
   'Boolean',
   'parseInt',
@@ -298,7 +298,8 @@ function processWorkletFunction(t, fun, fileName) {
 
       if (
         parentNode.type === 'MemberExpression' &&
-        (parentNode.property === path.node && !parentNode.computed)
+        parentNode.property === path.node &&
+        !parentNode.computed
       ) {
         return;
       }
@@ -554,7 +555,7 @@ function removePluginsFromBlacklist(plugins) {
   });
 }
 
-module.exports = function({ types: t }) {
+module.exports = function ({ types: t }) {
   return {
     visitor: {
       CallExpression: {
@@ -570,7 +571,7 @@ module.exports = function({ types: t }) {
     },
     // In this way we can modify babel options
     // https://github.com/babel/babel/blob/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages/babel-core/src/transformation/normalize-opts.js#L64
-    manipulateOptions(opts, parserOpts) {
+    manipulateOptions(opts, _) {
       const plugins = opts.plugins;
       removePluginsFromBlacklist(plugins);
     },

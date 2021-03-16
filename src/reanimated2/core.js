@@ -1,4 +1,4 @@
-/* global _WORKLET _getCurrentTime _frameTimestamp _eventTimestamp, _setGlobalConsole */
+/* global _WORKLET _getCurrentTime _frameTimestamp _eventTimestamp */
 
 import NativeReanimated from './NativeReanimated';
 import { Platform } from 'react-native';
@@ -7,13 +7,6 @@ import { addWhitelistedNativeProps } from '../ConfigHelper';
 global.__reanimatedWorkletInit = function (worklet) {
   worklet.__worklet = true;
 };
-
-if (global._setGlobalConsole === undefined) {
-  // it can happen when Reanimated plugin wasn't added, but the user uses the only API from version 1
-  global._setGlobalConsole = () => {
-    // noop
-  };
-}
 
 export const checkPluginState = () => {
   if (
@@ -276,16 +269,3 @@ export function createAnimatedPropAdapter(adapter, nativeProps) {
   addWhitelistedNativeProps(nativePropsToAdd);
   return adapter;
 }
-
-const capturableConsole = console;
-runOnUI(() => {
-  'worklet';
-  const console = {
-    debug: runOnJS(capturableConsole.debug),
-    log: runOnJS(capturableConsole.log),
-    warn: runOnJS(capturableConsole.warn),
-    error: runOnJS(capturableConsole.error),
-    info: runOnJS(capturableConsole.info),
-  };
-  _setGlobalConsole(console);
-})();
