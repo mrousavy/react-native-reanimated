@@ -196,6 +196,19 @@
 		B86B451F25F294C500CA0B60 /* ShareableValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareableValue.h; sourceTree = "<group>"; };
 		B86B452125F294C500CA0B60 /* ErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorHandler.h; sourceTree = "<group>"; };
 		B86B461025F2B3E800CA0B60 /* RuntimeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuntimeManager.h; sourceTree = "<group>"; };
+		B8F05DEE26013E6A0019409F /* JSGlobalUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSGlobalUtils.h; sourceTree = "<group>"; };
+		B8F05DF026013F100019409F /* NativeProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeProxy.h; sourceTree = "<group>"; };
+		B8F05DF126013F100019409F /* REAIOSErrorHandler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = REAIOSErrorHandler.mm; sourceTree = "<group>"; };
+		B8F05DF226013F100019409F /* NativeMethods.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeMethods.mm; sourceTree = "<group>"; };
+		B8F05DF326013F100019409F /* REAIOSScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REAIOSScheduler.h; sourceTree = "<group>"; };
+		B8F05DF426013F100019409F /* NativeProxy.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeProxy.mm; sourceTree = "<group>"; };
+		B8F05DF526013F100019409F /* REAIOSScheduler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = REAIOSScheduler.mm; sourceTree = "<group>"; };
+		B8F05DF626013F100019409F /* REAIOSErrorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REAIOSErrorHandler.h; sourceTree = "<group>"; };
+		B8F05DF726013F100019409F /* REAIOSLogger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = REAIOSLogger.mm; sourceTree = "<group>"; };
+		B8F05DF826013F100019409F /* NativeMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeMethods.h; sourceTree = "<group>"; };
+		B8F05DF926013F100019409F /* UIResponder+Reanimated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Reanimated.h"; sourceTree = "<group>"; };
+		B8F05DFA26013F100019409F /* UIResponder+Reanimated.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIResponder+Reanimated.mm"; sourceTree = "<group>"; };
+		B8F05DFB26013F100019409F /* REAIOSLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REAIOSLogger.h; sourceTree = "<group>"; };
 		FDBB176E229BF04900D1E455 /* libRNReanimated-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNReanimated-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -301,6 +314,7 @@
 				440FEC2B209062F100EEC73A /* REANodesManager.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				FDBB176E229BF04900D1E455 /* libRNReanimated-tvOS.a */,
+				B8F05DEF26013F100019409F /* native */,
 				B86B44EE25F294C500CA0B60 /* Common */,
 			);
 			sourceTree = "<group>";
@@ -402,6 +416,7 @@
 				B86B450D25F294C500CA0B60 /* RuntimeDecorator.h */,
 				B86B450E25F294C500CA0B60 /* PlatformDepMethodsHolder.h */,
 				B86B450F25F294C500CA0B60 /* WorkletEventHandler.h */,
+				B8F05DEE26013E6A0019409F /* JSGlobalUtils.h */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -447,6 +462,25 @@
 				B86B452125F294C500CA0B60 /* ErrorHandler.h */,
 			);
 			path = SpecTools;
+			sourceTree = "<group>";
+		};
+		B8F05DEF26013F100019409F /* native */ = {
+			isa = PBXGroup;
+			children = (
+				B8F05DF026013F100019409F /* NativeProxy.h */,
+				B8F05DF126013F100019409F /* REAIOSErrorHandler.mm */,
+				B8F05DF226013F100019409F /* NativeMethods.mm */,
+				B8F05DF326013F100019409F /* REAIOSScheduler.h */,
+				B8F05DF426013F100019409F /* NativeProxy.mm */,
+				B8F05DF526013F100019409F /* REAIOSScheduler.mm */,
+				B8F05DF626013F100019409F /* REAIOSErrorHandler.h */,
+				B8F05DF726013F100019409F /* REAIOSLogger.mm */,
+				B8F05DF826013F100019409F /* NativeMethods.h */,
+				B8F05DF926013F100019409F /* UIResponder+Reanimated.h */,
+				B8F05DFA26013F100019409F /* UIResponder+Reanimated.mm */,
+				B8F05DFB26013F100019409F /* REAIOSLogger.h */,
+			);
+			path = native;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
