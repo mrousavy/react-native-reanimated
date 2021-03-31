@@ -54,7 +54,7 @@ typedef JSCExecutorFactory ExecutorFactory;
       auto reanimatedModule = reanimated::createReanimatedModule(callInvoker);
 #endif
       runtime.global().setProperty(runtime,
-                                   jsi::PropNameID::forAscii(runtime, "__reanimatedModuleProxy"),
+                                   jsi::PropNameID::forUtf8(runtime, "__reanimatedModuleProxy"),
                                    jsi::Object::createFromHostObject(runtime, reanimatedModule));
     }
   };

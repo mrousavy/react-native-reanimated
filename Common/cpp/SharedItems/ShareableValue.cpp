@@ -315,8 +315,8 @@ jsi::Value ShareableValue::toJSValue(jsi::Runtime &rt) {
           runtimeManager->scheduler->scheduleOnJS(job);
           return jsi::Value::undefined();
         };
-        jsi::Function wrapperFunction = jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forAscii(rt, "hostFunction"), 0, warnFunction);
-        jsi::Function res = jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forAscii(rt, "hostFunction"), 0, clb);
+        jsi::Function wrapperFunction = jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forUtf8(rt, "hostFunction"), 0, warnFunction);
+        jsi::Function res = jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forUtf8(rt, "hostFunction"), 0, clb);
         addHiddenProperty(rt, std::move(res), wrapperFunction, CALL_ASYNC);
         jsi::Object functionHandler = createHost(rt, hostFunctionWrapper->value);
         addHiddenProperty(rt, std::move(functionHandler), wrapperFunction, PRIMAL_FUNCTION);
@@ -365,7 +365,7 @@ jsi::Value ShareableValue::toJSValue(jsi::Runtime &rt) {
            rt.global().setProperty(rt, "jsThis", oldJSThis); //clean jsThis
            return res;
         };
-        return jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forAscii(rt, name.c_str()), 0, clb);
+        return jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forUtf8(rt, name.c_str()), 0, clb);
       } else {
         // when run outside of UI thread we enqueue a call on the UI thread
         auto clb = [=](
@@ -423,7 +423,7 @@ jsi::Value ShareableValue::toJSValue(jsi::Runtime &rt) {
           });
           return jsi::Value::undefined();
         };
-        return jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forAscii(rt, "_workletFunction"), 0, clb);
+        return jsi::Function::createFromHostFunction(rt, jsi::PropNameID::forUtf8(rt, "_workletFunction"), 0, clb);
       }
     }
     default: {
