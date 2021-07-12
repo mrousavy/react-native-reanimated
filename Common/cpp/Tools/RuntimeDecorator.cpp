@@ -5,6 +5,8 @@
 #include "MutableValue.h"
 #include "LayoutAnimationsProxy.h"
 
+// dummy comment
+
 namespace reanimated {
 
 std::unordered_map<RuntimePointer, RuntimeType> RuntimeDecorator::runtimeRegistry;
