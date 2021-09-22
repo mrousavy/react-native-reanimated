@@ -1,10 +1,14 @@
 #include "JSIStoreValueUser.h"
 #include "RuntimeManager.h"
+
 #ifdef ONANDROID
-#include <AndroidScheduler.h>
+#include <fbjni/fbjni.h>
+#include <jni.h>
 #endif
 
 namespace reanimated {
+
+using namespace facebook;
 
 std::weak_ptr<jsi::Value> StoreUser::getWeakRef(jsi::Runtime &rt) {
   const std::lock_guard<std::recursive_mutex> lock(storeUserData->storeMutex);
@@ -32,21 +36,17 @@ StoreUser::~StoreUser() {
   std::shared_ptr<Scheduler> strongScheduler = scheduler.lock();
   if (strongScheduler != nullptr) {
     std::shared_ptr<StaticStoreUser> sud = storeUserData;
+
     #ifdef ONANDROID
     jni::ThreadScope::WithClassLoader([&] {
+    #endif
       strongScheduler->scheduleOnUI([id, sud]() {
         const std::lock_guard<std::recursive_mutex> lock(sud->storeMutex);
         if (sud->store.count(id) > 0) {
           sud->store.erase(id);
         }
       });
-    });
-    #else 
-    strongScheduler->scheduleOnUI([id, sud]() {
-        const std::lock_guard<std::recursive_mutex> lock(sud->storeMutex);
-        if (sud->store.count(id) > 0) {
-          sud->store.erase(id);
-        }
+    #ifdef ONANDROID
     });
     #endif
   }

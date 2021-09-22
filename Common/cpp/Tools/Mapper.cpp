@@ -2,7 +2,14 @@
 #include "MutableValue.h"
 #include "SharedParent.h"
 
+#ifdef ONANDROID
+#include <fbjni/fbjni.h>
+#include <jni.h>
+#endif
+
 namespace reanimated {
+
+using namespace facebook;
 
 Mapper::Mapper(
     NativeReanimatedModule *module,
@@ -59,9 +66,15 @@ void Mapper::enableFastMode(
 }
 
 Mapper::~Mapper() {
-  for (auto input : inputs) {
-    input->removeListener(id);
-  }
+  #ifdef ONANDROID
+  jni::ThreadScope::WithClassLoader([&] {
+  #endif
+    for (auto input : inputs) {
+      input->removeListener(id);
+    }
+  #ifdef ONANDROID
+  });
+  #endif
 }
 
 } // namespace reanimated
