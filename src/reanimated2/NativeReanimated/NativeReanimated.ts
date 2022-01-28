@@ -1,5 +1,15 @@
+import { NativeModules } from 'react-native';
 import { SharedValue } from '../commonTypes';
 import { Descriptor } from '../hook/commonTypes';
+
+if (global.__reanimatedModuleProxy == null) {
+  const Reanimated = NativeModules.ReanimatedModule;
+  if (Reanimated == null)
+    throw new Error(
+      'Native Reanimated Module could not be found! Make sure you installed all native dependencies and rebuilt the app.'
+    );
+  Reanimated.install();
+}
 
 const InnerNativeModule = global.__reanimatedModuleProxy;
 
