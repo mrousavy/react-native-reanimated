@@ -38,10 +38,14 @@ NativeProxy::NativeProxy(
       layoutAnimations(std::move(_layoutAnimations)) {}
 
 NativeProxy::~NativeProxy() {
-  runtime_->global().setProperty(
-      *runtime_,
-      jsi::PropNameID::forAscii(*runtime_, "__reanimatedModuleProxy"),
-      jsi::Value::undefined());
+  jni::ThreadScope::WithClassLoader([&] {
+    // Unset the global __reanimatedModuleProxy instance so we don't leave a
+    // invalid reference out there
+    runtime_->global().setProperty(
+        *runtime_,
+        jsi::PropNameID::forAscii(*runtime_, "__reanimatedModuleProxy"),
+        jsi::Value::undefined());
+  });
 }
 
 jni::local_ref<NativeProxy::jhybriddata> NativeProxy::initHybrid(
