@@ -78,3 +78,29 @@ export function runOnRuntime<Args extends unknown[], ReturnValue>(
       })
     );
 }
+
+const context1 = createWorkletRuntime('context1');
+const context2 = createWorkletRuntime('context2');
+
+const runAsync = runOnRuntime(context2, (func: () => void) => {
+  'worklet';
+  try {
+    // Call long-running function on a background context
+    func();
+  } catch (e) {
+    // Re-throw error on JS Thread
+    console.error('thingy threw an error!');
+  }
+});
+
+const runNormalWorklet = runOnRuntime(context1, () => {
+  'worklet';
+
+  console.log('running from context1!');
+  runAsync(() => {
+    'worklet';
+    console.log('running from context2!');
+  });
+});
+
+runNormalWorklet();
